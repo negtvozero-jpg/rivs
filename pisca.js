@@ -217,17 +217,9 @@
 
   function mapSubscriber(event) {
     if (!event) return "sub";
-    if (event.isCommunityGift === true || event.playedAsCommunityGift === true) {
-      return null;
-    }
-    if (
-      event.gifted === true ||
-      event.bulkGifted === true ||
-      event.isGift === true ||
-      event.isGifted === true
-    ) {
-      return "gift";
-    }
+    if (event.bulkGifted === true) return "giftbomb";
+    if (event.isCommunityGift === true || event.playedAsCommunityGift === true) return null;
+    if (event.gifted === true || event.isGift === true || event.isGifted === true) return "gift";
     return "sub";
   }
 
@@ -237,7 +229,6 @@
     if (listener === "tip-latest") return "tip";
     if (listener === "cheer-latest") return "cheer";
     if (listener === "raid-latest") return "raid";
-    if (listener === "host-latest") return "host";
     return null;
   }
 
@@ -253,7 +244,7 @@
       listener = event.listener.toLowerCase();
     }
     if (listener === "widget-button") {
-      const match = /^test(Follow|Sub|Gift|Tip|Cheer|Raid|Host)$/.exec(String(event.field || ""));
+      const match = /^test(Follow|Sub|GiftBomb|Gift|Tip|Cheer|Raid)$/.exec(String(event.field || ""));
       if (match) enqueueAlert(match[1].toLowerCase());
       return;
     }
@@ -342,7 +333,7 @@
         src: RIV_URL,
         canvas: canvas,
         artboard: ARTBOARD,
-        stateMachine: STATE_MACHINE,
+        stateMachines: STATE_MACHINE,
         autoplay: true,
         autoBind: true,
         layout: new api.Layout({
