@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const RIV_URL = "https://cdn.jsdelivr.net/gh/negtvozero-jpg/rivs@b5c589a1226bdc9adf86ac00d405922af5bd1335/piscav2.riv";
+  const RIV_URL = "https://cdn.jsdelivr.net/gh/negtvozero-jpg/rivs@b5c589a1226bdc9adf86ac00d405922af5bd1335/piscav2.riv@latest";
   const RIVE_RUNTIME_SRC = "https://cdn.jsdelivr.net/npm/@rive-app/webgl2@2.44.2/rive.js";
   const RIVE_WASM_SRC = "https://cdn.jsdelivr.net/npm/@rive-app/webgl2@2.44.2/rive.wasm";
   const ARTBOARD = "Artboard 1";
